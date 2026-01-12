@@ -11,11 +11,11 @@ namespace Engine::Rendering::Vulkan
 	namespace
 	{
 		// NOLINTBEGIN(readability-identifier-naming) this function has names as specified by Vulkan
-		VKAPI_ATTR VkBool32 VKAPI_CALL vulkanDebugCallback(
-			VkDebugUtilsMessageSeverityFlagBitsEXT		messageSeverity,
-			VkDebugUtilsMessageTypeFlagsEXT				messageType,
-			const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
-			void*										pUserData
+		VKAPI_ATTR vk::Bool32 VKAPI_CALL vulkanDebugCallback(
+			vk::DebugUtilsMessageSeverityFlagBitsEXT	  messageSeverity,
+			vk::DebugUtilsMessageTypeFlagsEXT			  messageType,
+			const vk::DebugUtilsMessengerCallbackDataEXT* pCallbackData,
+			void*										  pUserData
 		)
 		{
 			(void)(messageType);
@@ -24,8 +24,10 @@ namespace Engine::Rendering::Vulkan
 			EXCEPTION_ASSERT(locked_logger, "Failed locking logger on Lua print() call");
 
 			// Log as error only if error bit set
-			Logging::LogLevel log_level = (messageSeverity &
-										   VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT) != 0
+			Logging::LogLevel log_level = static_cast<unsigned int>(
+											  messageSeverity &
+											  vk::DebugUtilsMessageSeverityFlagBitsEXT::eError
+										  ) != 0
 											  ? Logging::LogLevel::Error
 											  : Logging::LogLevel::Warning;
 
@@ -40,6 +42,6 @@ namespace Engine::Rendering::Vulkan
 		// NOLINTEND(readability-identifier-naming)
 	} // namespace
 
-	const PFN_vkDebugUtilsMessengerCallbackEXT debug_callback = vulkanDebugCallback;
+	const vk::PFN_DebugUtilsMessengerCallbackEXT debug_callback = vulkanDebugCallback;
 
 } // namespace Engine::Rendering::Vulkan

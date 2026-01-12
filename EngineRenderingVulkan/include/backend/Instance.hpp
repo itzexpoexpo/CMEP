@@ -24,7 +24,7 @@ namespace Engine::Rendering::Vulkan
 	/**
 	 * Vulkan callback for logging
 	 */
-	extern const PFN_vkDebugUtilsMessengerCallbackEXT debug_callback;
+	extern const vk::PFN_DebugUtilsMessengerCallbackEXT debug_callback;
 #endif
 
 	class Instance final : public Logging::SupportsLogging, public HandleWrapper<vk::raii::Instance>

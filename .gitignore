@@ -402,6 +402,8 @@ cov-int
 
 /include
 
+external/luajit*
+
 external/glslang*
 
 external/SPIRV-Tools*

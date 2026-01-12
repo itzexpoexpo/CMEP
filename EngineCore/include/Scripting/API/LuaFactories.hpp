@@ -7,9 +7,7 @@
 #include "SceneManager.hpp"
 #include "SceneObject.hpp"
 
-/**
- * Provides functions that construct a proper table for the specified object
- */
+/** Provides functions that construct a proper table for the specified object */
 namespace Engine::Scripting::API::LuaFactories
 {
 	template <typename class_t>

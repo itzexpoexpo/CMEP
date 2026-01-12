@@ -55,8 +55,7 @@ namespace Engine
 	 * Time, date and build configuration
 	 */
 	constexpr std::string_view buildinfo_build = "CMEP EngineCore " __TIME__ " " __DATE__
-												 " build, configured " BUILDINFO_BUILDCONFIG
-												 " " MACRO_STR(IS_DEBUG);
+												 " build, configured " BUILDINFO_BUILDCONFIG;
 
 	/**
 	 * Name and version of compiler
